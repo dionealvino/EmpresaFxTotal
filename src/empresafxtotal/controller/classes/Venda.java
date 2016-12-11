@@ -8,12 +8,13 @@ import java.util.Date;
  * @author Barbara
  */
 public class Venda {
+
     private int numero;
     private Date data;
     private Cliente cliente;
     private Funcionario vendedor;
     private ArrayList<VendaItem> itens;
-    
+
     private int pkVenda;
 
     public Venda() {
@@ -41,9 +42,9 @@ public class Venda {
         this.itens = itens;
         this.pkVenda = pkVenda;
     }
-    
-    public void addItem(VendaItem vi){
-        if (itens ==null) {
+
+    public void addItem(VendaItem vi) {
+        if (itens == null) {
             itens = new ArrayList<>();
         }
         itens.add(vi);
@@ -101,7 +102,5 @@ public class Venda {
     public String toString() {
         return "Venda{" + "numero=" + numero + ", data=" + data + ", cliente=" + cliente + ", vendedor=" + vendedor + ", itens=" + itens + ", pkVenda=" + pkVenda + '}';
     }
-    
-    
-    
+
 }

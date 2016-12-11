@@ -5,10 +5,11 @@ package empresafxtotal.controller.classes;
  * @author Barbara
  */
 public class VendaItem {
+
     private int qtd;
     private double valorUnitario;
     private Produto produto;
-    
+
     private int fkVenda;
     private int pkVendaItem;
 
@@ -73,7 +74,5 @@ public class VendaItem {
     public String toString() {
         return "VendaItem{" + "qtd=" + qtd + ", valorUnitario=" + valorUnitario + ", produto=" + produto + ", fkVenda=" + fkVenda + ", pkVendaItem=" + pkVendaItem + '}';
     }
-    
-    
-    
+
 }
