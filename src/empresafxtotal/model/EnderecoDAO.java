@@ -5,7 +5,7 @@
  */
 package empresafxtotal.model;
 
-import empresafxtotal.controller.Endereco;
+import empresafxtotal.controller.classes.Endereco;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;

@@ -1,10 +1,10 @@
 package empresafxtotal;
 
-import empresafxtotal.controller.Cliente;
-import empresafxtotal.controller.Funcionario;
-import empresafxtotal.controller.Produto;
-import empresafxtotal.controller.Venda;
-import empresafxtotal.controller.VendaItem;
+import empresafxtotal.controller.classes.Cliente;
+import empresafxtotal.controller.classes.Funcionario;
+import empresafxtotal.controller.classes.Produto;
+import empresafxtotal.controller.classes.Venda;
+import empresafxtotal.controller.classes.VendaItem;
 import java.util.ArrayList;
 import java.util.Date;
 import javafx.application.Application;

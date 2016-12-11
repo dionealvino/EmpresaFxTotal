@@ -1,8 +1,8 @@
 package empresafxtotal.model;
 
 
-import empresafxtotal.controller.Fornecedor;
-import empresafxtotal.controller.FornecedorEndereco;
+import empresafxtotal.controller.classes.Fornecedor;
+import empresafxtotal.controller.classes.FornecedorEndereco;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;

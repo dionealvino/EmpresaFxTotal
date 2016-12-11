@@ -5,6 +5,7 @@
  */
 package empresafxtotal.controller;
 
+import empresafxtotal.controller.classes.Cargo;
 import empresafxtotal.model.CargoDAO;
 import java.net.URL;
 import java.util.List;

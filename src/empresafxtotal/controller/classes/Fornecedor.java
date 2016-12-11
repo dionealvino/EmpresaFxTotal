@@ -1,6 +1,7 @@
 
-package empresafxtotal.controller;
+package empresafxtotal.controller.classes;
 
+import empresafxtotal.controller.classes.FornecedorEndereco;
 import empresafxtotal.model.FornecedorDAO;
 
 

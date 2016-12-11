@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package empresafxtotal.controller;
+package empresafxtotal.controller.classes;
 
 import empresafxtotal.model.ClienteDAO;
 import java.sql.SQLException;

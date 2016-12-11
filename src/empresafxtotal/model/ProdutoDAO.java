@@ -6,7 +6,7 @@
 package empresafxtotal.model;
 
 
-import empresafxtotal.controller.Produto;
+import empresafxtotal.controller.classes.Produto;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;

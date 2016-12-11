@@ -5,10 +5,10 @@
  */
 package empresafxtotal.model;
 
-import empresafxtotal.controller.Cargo;
+import empresafxtotal.controller.classes.Cargo;
 
-import empresafxtotal.controller.Funcionario;
-import empresafxtotal.controller.FuncionarioEndereco;
+import empresafxtotal.controller.classes.Funcionario;
+import empresafxtotal.controller.classes.FuncionarioEndereco;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;

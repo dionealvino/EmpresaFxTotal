@@ -3,12 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package empresafxtotal.controller;
+package empresafxtotal.controller.classes;
 
-import empresafxtotal.model.FuncionarioEnderecoDAO;
-
-
-public class FuncionarioEndereco {
+/**
+ *
+ * @author Matheus
+ */
+public class FornecedorEndereco {
     private String logradouro;
     private String bairro;
     private String cidade;
@@ -17,11 +18,12 @@ public class FuncionarioEndereco {
     private String cep;
     
     private int pk_endereco;
-    private int fk_funcionario;
-    public FuncionarioEndereco() {
-   
+    private int fk_fornecedor;
+
+    public FornecedorEndereco() {
+
     }
-    public FuncionarioEndereco(String logradouro, String bairro, String cidade, String estado, String pais, String cep) {
+    public FornecedorEndereco(String logradouro, String bairro, String cidade, String estado, String pais, String cep) {
         this.logradouro = logradouro;
         this.bairro = bairro;
         this.cidade = cidade;
@@ -30,7 +32,7 @@ public class FuncionarioEndereco {
         this.cep = cep;
     }
 
-    public FuncionarioEndereco(String logradouro, String bairro, String cidade, String estado, String pais, String cep, int pk_endereco, int fk_funcionario) {
+    public FornecedorEndereco(String logradouro, String bairro, String cidade, String estado, String pais, String cep, int pk_endereco, int fk_fornecedor) {
         this.logradouro = logradouro;
         this.bairro = bairro;
         this.cidade = cidade;
@@ -38,22 +40,20 @@ public class FuncionarioEndereco {
         this.pais = pais;
         this.cep = cep;
         this.pk_endereco = pk_endereco;
-        this.fk_funcionario = fk_funcionario;
+        this.fk_fornecedor = fk_fornecedor;
     }
 
     
     
-    
-    
-    
-    
-    
+       
+
     public String getLogradouro() {
         return logradouro;
     }
 
     public void setLogradouro(String logradouro) {
         this.logradouro = logradouro;
+        
     }
 
     public String getBairro() {
@@ -104,20 +104,18 @@ public class FuncionarioEndereco {
         this.pk_endereco = pk_endereco;
     }
 
-    public int getFk_funcionario() {
-        return fk_funcionario;
+    public int getFk_fornecedor() {
+        return fk_fornecedor;
     }
 
-    public void setFk_funcionario(int fk_funcionario) {
-        this.fk_funcionario = fk_funcionario;
+    public void setFk_fornecedor(int fk_fornecedor) {
+        this.fk_fornecedor = fk_fornecedor;
     }
 
     @Override
     public String toString() {
-        return "FuncionarioEndereco{" + "logradouro=" + logradouro + ", bairro=" + bairro + ", cidade=" + cidade + ", estado=" + estado + ", pais=" + pais + ", cep=" + cep + ", pk_endereco=" + pk_endereco + ", fk_funcionario=" + fk_funcionario + '}';
+        return "FornecedorEndereco{" + "logradouro=" + logradouro + ", bairro=" + bairro + ", cidade=" + cidade + ", estado=" + estado + ", pais=" + pais + ", cep=" + cep + ", pk_endereco=" + pk_endereco + ", fk_fornecedor=" + fk_fornecedor + '}';
     }
-    
-    
     
     
     

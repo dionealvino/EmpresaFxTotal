@@ -5,6 +5,8 @@
  */
 package empresafxtotal.controller;
 
+import empresafxtotal.controller.classes.Cliente;
+import empresafxtotal.controller.classes.Endereco;
 import empresafxtotal.model.ClienteDAO;
 import empresafxtotal.model.EnderecoDAO;
 import java.net.URL;
