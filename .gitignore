@@ -1,2 +1,5 @@
+build/
+dist/
 nbproject/
-src/empresafxtotal/model/BDConfig.java/
+*.class/
+src/empresafxtotal/model/BDConfig.java
