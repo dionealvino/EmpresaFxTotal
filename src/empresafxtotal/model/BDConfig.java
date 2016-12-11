@@ -6,6 +6,7 @@ package empresafxtotal.model;
  */
 public class BDConfig {
     
+    
     public static final String URL = "jdbc:postgresql://localhost/empresa";
     public static final String USR = "postgres";
     public static final String PWD = "1001";
