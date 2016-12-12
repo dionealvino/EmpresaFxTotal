@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package empresafxtotal.model;
 
 import empresafxtotal.controller.classes.Cliente;
@@ -16,7 +11,7 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author Matheus
+ * @author Barbara
  */
 public class ClienteDAO {
 
@@ -24,27 +19,22 @@ public class ClienteDAO {
 
     }
 
-    public static int create(Cliente c) {
-        try {
-            Statement stm = BancoDados.createConnection().createStatement();
-            //
-            String sql = "insert into clientes (nome,cpf) values('" + c.getNome() + "','" + c.getCpf() + "')";
+    public static int create(Cliente c) throws SQLException {
+        Statement stm = BancoDados.createConnection().createStatement();
+        String sql = "insert into clientes (nome,cpf) values('"
+                + c.getNome() + "','"
+                + c.getCpf() + "')";
 
-            stm.execute(sql, Statement.RETURN_GENERATED_KEYS);
-            ResultSet rs = stm.getGeneratedKeys();
-            rs.next();//
-            int key = rs.getInt(1); //retorna o id gravado no banco
-            c.setPk_cliente(key);//guardamos o id salvo no banco na variavel setPk_cliente.
-            System.out.println(key);
-            EnderecoDAO.create(c.getEndereco()); //Aqui chamamos a DAO do enderenco e passamos os valores para ela gravar pelo getEnderenco.
+        stm.execute(sql, Statement.RETURN_GENERATED_KEYS);
+        ResultSet rs = stm.getGeneratedKeys();
+        rs.next();
+        int key = rs.getInt(1); //retorna o id gravado no banco
+        c.setPk_cliente(key);//guardamos o id salvo no banco na variavel setPk_cliente.
+        System.out.println(key);
+        EnderecoDAO.create(c.getEndereco()); //Aqui chamamos a DAO do enderenco e passamos os valores para ela gravar pelo getEnderenco.
 
-            return key;
+        return key;
 
-        } catch (SQLException ex) {
-            Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-        return 0;
     }
 
     public static Cliente retreave(int pk_cliente) {
