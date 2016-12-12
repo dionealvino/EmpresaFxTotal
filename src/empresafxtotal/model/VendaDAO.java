@@ -19,14 +19,6 @@ public class VendaDAO {
     }
 
     public static int create(Venda venda) throws SQLException {
-        /*
-        fk_cliente			
-        fk_vendedor			
-        numero			
-        datas
-        
-        */
-        
             Statement stm = BancoDados.createConnection().createStatement();
             String sql = 
                     "insert into Vendas (nome,cpf) values('" 
@@ -50,12 +42,13 @@ public class VendaDAO {
                             createStatement();
 
             String sql = "Select * from Vendas where pk_Venda=" + pk_venda;
-
             ResultSet rs = stm.executeQuery(sql);
             rs.next();
-
             //Endereco e = EnderecoDAO.retreaveByVenda(pk_venda);
-            return new Venda(rs.getInt("pk_Venda"), rs.getString("nome"), rs.getString("cpf"), e);
+            return new Venda(
+                    rs.getInt("pk_Venda"),
+                    rs.getString("nome"),
+                    rs.getString("cpf"), e);
 
     }
 
@@ -65,20 +58,19 @@ public class VendaDAO {
                         createStatement();
         String sql = "Select * from Vendas";
         ResultSet rs = stm.executeQuery(sql);
-        ArrayList<Venda> cs = new ArrayList<>();
+        ArrayList<Venda> vendas = new ArrayList<>();
         while (rs.next())//vamos fazer uma condição para que o next vai andando na tabela ate o final
         {
             //Endereco e = EnderecoDAO.retreaveByVenda(rs.getInt("pk_Venda")); //Como já temos o retrave no
             //Endereco fazemo a consulta em Venda e pegamos a chave com o rs.getInt
             //Na parte de baixo vamos add a consulta na lista
-            cs.add(new Venda(
+            vendas.add(new Venda(
                     rs.getInt("pk_Venda"),
                     rs.getString("nome"),
-                    rs.getString("cpf"),
-                    e));
+                    rs.getString("cpf")));
         }
 
-        return cs;
+        return vendas;
     }
 
     public static Venda retreaveByVendaEnde(int fk_Venda) {

@@ -22,7 +22,7 @@ public class VendaItem {
         this.produto = produto;
     }
 
-    public VendaItem(int qtd, float valorUnitario, Produto produto, int fkVenda, int pkVendaItem) {
+    public VendaItem(int qtd, double valorUnitario, Produto produto, int fkVenda, int pkVendaItem) {
         this.qtd = qtd;
         this.valorUnitario = valorUnitario;
         this.produto = produto;

@@ -9,13 +9,15 @@ import java.util.Date;
  */
 public class Venda {
 
+    private int pkVenda;
+
     private int numero;
     private Date data;
+    
     private Cliente cliente;
     private Funcionario vendedor;
     private ArrayList<VendaItem> itens;
 
-    private int pkVenda;
 
     public Venda() {
     }
