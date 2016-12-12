@@ -1,5 +1,6 @@
 package empresafxtotal.model;
 
+<<<<<<< Updated upstream
 import empresafxtotal.controller.classes.Venda;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -8,12 +9,15 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+=======
+>>>>>>> Stashed changes
 /**
  *
  * @author Bárbara
  */
 public class VendaDAO {
     
+<<<<<<< Updated upstream
     private VendaDAO() {
 
     }
@@ -133,4 +137,6 @@ public class VendaDAO {
 
     }
 
+=======
+>>>>>>> Stashed changes
 }

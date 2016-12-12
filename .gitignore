@@ -1,4 +1,5 @@
 build/
+<<<<<<< Updated upstream
 
 dist/
 
@@ -8,3 +9,9 @@ test/
 src/empresafxtotal/model/BDConfig.java
 *.class/
 
+=======
+dist/
+nbproject/
+*.class/
+src/empresafxtotal/model/BDConfig.java
+>>>>>>> Stashed changes
