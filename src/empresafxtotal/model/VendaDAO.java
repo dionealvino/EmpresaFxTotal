@@ -1,23 +1,18 @@
 package empresafxtotal.model;
 
-<<<<<<< Updated upstream
 import empresafxtotal.controller.classes.Venda;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
-=======
->>>>>>> Stashed changes
+
 /**
  *
  * @author Bárbara
  */
 public class VendaDAO {
     
-<<<<<<< Updated upstream
     private VendaDAO() {
 
     }
@@ -32,12 +27,10 @@ public class VendaDAO {
             stm.execute(sql, Statement.RETURN_GENERATED_KEYS);
             ResultSet rs = stm.getGeneratedKeys();
             rs.next();
-            int key = rs.getInt(1); //retorna o id gravado no banco
-            venda.setPkVenda(key);//guardamos o id salvo no banco na variavel setPk_Venda.
-            System.out.println(key);
+            int key = rs.getInt(1); 
+            venda.setPkVenda(key);
             //EnderecoDAO.create(venda.getEndereco()); //Aqui chamamos a DAO do enderenco e passamos os valores para ela gravar pelo getEnderenco.
-
-            return key;
+           return key;
     }
 
     public static Venda retreave(int pk_venda) throws SQLException {
@@ -77,58 +70,28 @@ public class VendaDAO {
         return vendas;
     }
 
-    public static Venda retreaveByVendaEnde(int fk_Venda) {
-        try {
+    public static void delete(Venda venda) throws SQLException {
             Statement stm
                     = BancoDados.createConnection().
                     createStatement();
-
-            String sql = "Select * from Vendas where pk_Venda=" + fk_Venda;
-
-            ResultSet rs = stm.executeQuery(sql);
-            rs.next();
-
-            Endereco e = EnderecoDAO.retreaveByVenda(fk_Venda);
-            return new Venda(rs.getInt("pk_Venda"), rs.getString("nome"), rs.getString("cpf"), e);
-
-        } catch (SQLException ex) {
-            Logger.getLogger(VendaDAO.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-        return null;
-    }
-
-    public static void delete(Venda c) {
-
-        try {
-            Statement stm
-                    = BancoDados.createConnection().
-                    createStatement();
-            String sql = "delete from Vendas where pk_Venda=" + c.getPk_Venda();
+            String sql = "delete from Vendas where pk_Venda=" + venda.getPkVenda();
             System.out.println(sql);
             stm.execute(sql);
-        } catch (SQLException ex) {
-            Logger.getLogger(EnderecoDAO.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
     }
 
   
-    public static void update(Venda c) {
-        try {
+    public static void update(Venda venda) throws SQLException {
             Statement stm
                     = BancoDados.createConnection().
                     createStatement();
-            String sql = "update  Vendas set " + "nome='" + c.getNome() + "',cpf='" + c.getCpf() + "'where pk_Venda=" + c.getPk_Venda();
-            EnderecoDAO.update(c.getEndereco());
+            String sql = "update  Vendas set " 
+                    + "nome='" + venda.getNome() 
+                    + "',cpf='" + venda.getCpf() 
+                    + "'where pk_Venda=" + venda.getPkVenda();
+            EnderecoDAO.update(venda.getEndereco());
             System.out.println(sql);
             stm.execute(sql);
-        } catch (SQLException ex) {
-            Logger.getLogger(EnderecoDAO.class.getName()).log(Level.SEVERE, null, ex);
-        }
 
     }
 
-=======
->>>>>>> Stashed changes
 }
