@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package empresafxtotal.controller.classes;
 
 import empresafxtotal.model.ClienteDAO;
@@ -47,12 +42,6 @@ public class Cliente {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-
-
-   
-   
-    
-
     public int getPk_cliente() {
         return pk_cliente;
     }
@@ -96,6 +85,10 @@ public class Cliente {
     public String toString() {
         return nome;
     }
+<<<<<<< HEAD
+=======
+
+>>>>>>> master
     public void save() throws SQLException{
         ClienteDAO.create(this);
     }
