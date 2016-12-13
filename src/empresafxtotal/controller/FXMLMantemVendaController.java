@@ -12,6 +12,7 @@ import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 
 /**
@@ -26,12 +27,36 @@ public class FXMLMantemVendaController implements Initializable {
     private int pkFuncionario;
     private int pkCliente;
     
+
     @FXML
-    private AnchorPane anchorPane;
+    private ComboBox<?> comboboxClientes;
+
     @FXML
-    private ComboBox<Funcionario> comboBoxCargo;
+    private TextField textFieldValor;
+
     @FXML
-    private ComboBox<Cliente> comboBoxCliente;
+    private ComboBox<?> comboboxVendedor;
+
+    @FXML
+    private TextField textFieldQtd;
+
+    @FXML
+    private ComboBox<?> comboboxProduto;
+
+    @FXML
+    void limpaTela() {
+
+    }
+
+    @FXML
+    void salvar() {
+
+    }
+
+    @FXML
+    void gravar() {
+
+    }
     
     
     @Override
