@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package empresafxtotal.controller;
 
 import empresafxtotal.controller.classes.Cliente;
@@ -25,18 +20,17 @@ import javafx.scene.layout.AnchorPane;
  * @author Usuario-PC
  */
 public class FXMLMantemClienteController implements Initializable {
-  private Endereco e;
+
+    private Endereco e;
     private Cliente c;
-    private int fkCliente=0;
-    private int pkEndereco=0;
+    private int fkCliente = 0;
+    private int pkEndereco = 0;
 
-
-@FXML
+    @FXML
     private TextField textFieldNome;
 
     @FXML
     private AnchorPane anchorPane;
-
 
     @FXML
     private TextField textFieldCPF;
@@ -58,40 +52,22 @@ public class FXMLMantemClienteController implements Initializable {
 
     @FXML
     private TextField textFieldCEP;
-    
+
     @FXML
     private ComboBox<Cliente> comboBoxClientes;
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        comboBoxEstado.getItems().addAll("AC", "AL", "AM", "AP", "BA", "CE", "DF", "ES", "GO", "MA", "MG", "MS", "MT", "PA", "PB", "PE", "PI", "PR", "RJ", "RN", "RO", "RS", "SC", "SE", "SP", "TO" );
-        comboBoxPais.getItems().addAll("Afghanistan", "Albania", "Algeria", "Andorra", "Angola", "Antarctica", "Antigua and Barbuda",
-"Argentina", "Armenia", "Australia", "Austria", "Azerbaijan", "Bahamas", "Bahrain", "Bangladesh", "Barbados",
-"Belarus", "Belgium", "Belize", "Benin", "Bermuda", "Bhutan", "Bolivia", "Bosnia and Herzegovina", "Botswana",
-"Brazil", "Brunei", "Bulgaria", "Burkina Faso", "Burma", "Burundi", "Cambodia", "Cameroon", "Canada", "Cape Verde",
-"Central African Republic", "Chad", "Chile", "China", "Colombia", "Comoros", "Congo, Democratic Republic",
-"Congo, Republic of the", "Costa Rica", "Cote d'Ivoire", "Croatia", "Cuba", "Cyprus", "Czech Republic", "Denmark",
-"Djibouti", "Dominica", "Dominican Republic", "East Timor", "Ecuador", "Egypt", "El Salvador", "Equatorial Guinea",
-"Eritrea", "Estonia", "Ethiopia", "Fiji", "Finland", "France", "Gabon", "Gambia", "Georgia", "Germany", "Ghana",
-"Greece", "Greenland", "Grenada", "Guatemala", "Guinea", "Guinea-Bissau", "Guyana", "Haiti", "Honduras", "Hong Kong",
-"Hungary", "Iceland", "India", "Indonesia", "Iran", "Iraq", "Ireland", "Israel", "Italy", "Jamaica", "Japan",
-"Jordan", "Kazakhstan", "Kenya", "Kiribati", "Korea, North", "Korea, South", "Kuwait", "Kyrgyzstan", "Laos", "Latvia",
-"Lebanon", "Lesotho", "Liberia", "Libya", "Liechtenstein", "Lithuania", "Luxembourg", "Macedonia", "Madagascar",
-"Malawi", "Malaysia", "Maldives", "Mali", "Malta", "Marshall Islands", "Mauritania", "Mauritius", "Mexico", "Micronesia",
-"Moldova", "Mongolia", "Morocco", "Monaco", "Mozambique", "Namibia", "Nauru", "Nepal", "Netherlands", "New Zealand",
-"Nicaragua", "Niger", "Nigeria", "Norway", "Oman", "Pakistan", "Panama", "Papua New Guinea", "Paraguay", "Peru",
-"Philippines", "Poland", "Portugal", "Qatar", "Romania", "Russia", "Rwanda", "Samoa", "San Marino", " Sao Tome",
-"Saudi Arabia", "Senegal", "Serbia and Montenegro", "Seychelles", "Sierra Leone", "Singapore", "Slovakia", "Slovenia",
-"Solomon Islands", "Somalia", "South Africa", "Spain", "Sri Lanka", "Sudan", "Suriname", "Swaziland", "Sweden",
-"Switzerland", "Syria", "Taiwan", "Tajikistan", "Tanzania", "Thailand", "Togo", "Tonga", "Trinidad and Tobago",
-"Tunisia", "Turkey", "Turkmenistan", "Uganda", "Ukraine", "United Arab Emirates", "United Kingdom", "United States",
-"Uruguay", "Uzbekistan", "Vanuatu", "Venezuela", "Vietnam", "Yemen", "Zambia", "Zimbabwe");
-        
+        comboBoxEstado.getItems().addAll("AC", "AL", "AM", "AP", "BA", "CE", "DF", "ES", "GO", "MA", "MG", "MS", "MT", "PA", "PB", "PE", "PI", "PR", "RJ", "RN", "RO", "RS", "SC", "SE", "SP", "TO");
+        comboBoxPais.getItems().addAll("Brasil", "EUA");
+
         List<Cliente> l = ClienteDAO.retreaveAll();
         comboBoxClientes.getItems().addAll(l);
-    }    
-    public void load(){
+    }
+
+    public void load() {
         c = comboBoxClientes.getValue();
-        
+
         textFieldNome.setText(c.getNome());
         textFieldCPF.setText(c.getCpf());
         textFieldEndereco.setText(c.getEndereco().getLogradouro());
@@ -102,9 +78,10 @@ public class FXMLMantemClienteController implements Initializable {
         comboBoxPais.setValue(c.getEndereco().getPais());
         fkCliente = c.getPk_cliente();
         pkEndereco = c.getEndereco().getPk_endereco();
-      
+
     }
-    public void limpaTela(){
+
+    public void limpaTela() {
         textFieldBairro.clear();
         textFieldCEP.clear();
         textFieldCPF.clear();
@@ -114,6 +91,7 @@ public class FXMLMantemClienteController implements Initializable {
         comboBoxEstado.getSelectionModel().clearSelection();
         comboBoxPais.getSelectionModel().clearSelection();
     }
+
     public void salvar() throws SQLException {
         boolean insert = false;
 
@@ -141,9 +119,8 @@ public class FXMLMantemClienteController implements Initializable {
         limpaTela();
 
     }
-     public void cancelar(){
+
+    public void cancelar() {
         limpaTela();
     }
-    }
-   
-
+}
