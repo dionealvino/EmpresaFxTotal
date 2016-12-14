@@ -15,7 +15,7 @@
       <TextField fx:id="textFieldValor" layoutX="556.0" layoutY="171.0" prefHeight="25.0" prefWidth="59.0" text="Valor" />
       <Button layoutX="533.0" layoutY="422.0" mnemonicParsing="false" onAction="#limpaTela" prefHeight="25.0" prefWidth="85.0" text="Cancelar" />
       <Button layoutX="625.0" layoutY="422.0" mnemonicParsing="false" onAction="#salvar" text="Enviar" />
-      <TableView layoutX="7.0" layoutY="11.0" prefHeight="404.0" prefWidth="444.0">
+      <TableView fx:id="tabelaVendas" layoutX="7.0" layoutY="11.0" prefHeight="404.0" prefWidth="444.0">
         <columns>
           <TableColumn fx:id="columnProduto" prefWidth="243.0" text="Produto" />
           <TableColumn fx:id="columnqtd" minWidth="7.0" prefWidth="64.0" text="Qtd" />

@@ -1,6 +1,7 @@
 package empresafxtotal.controller.classes;
 
 import empresafxtotal.model.VendaDAO;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
 
