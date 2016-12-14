@@ -81,20 +81,20 @@ public class FXMLMantemVendaController implements Initializable {
             List<Cliente> clientes = ClienteDAO.retreaveAll();
             comboboxClientes.getItems().addAll(clientes);
             
-<<<<<<< HEAD
+
             List<Funcionario> f = FuncionarioDAO.retreaveByCargo(8);
             comboboxVendedor.getItems().addAll(f);
             
             List<Produto> produtoLista = ProdutoDAO.retreaveAll();
             comboboxProduto.getItems().addAll(produtoLista);
-=======
+
             List<Funcionario> funcionarios = FuncionarioDAO.retreaveByCargo(1);
             comboboxVendedor.getItems().addAll(funcionarios);
             
             List<Produto> p = ProdutoDAO.retreaveAll();
             comboboxProduto.getItems().addAll(p);
             
->>>>>>> master
+
         } catch (SQLException ex) {
             Logger.getLogger(FXMLMantemVendaController.class.getName()).log(Level.SEVERE, null, ex);
         }
