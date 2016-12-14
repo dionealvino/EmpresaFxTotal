@@ -24,7 +24,8 @@ public class VendaItemDAO {
         String sql = "insert into vendas_itens (qtd, valor_unitario, fk_produto, fk_venda) values('"
                 + vendaItem.getQtd() + "','"
                 + vendaItem.getValorUnitario() + "','"
-                + vendaItem.getProduto() + "')";
+                 + vendaItem.getProduto().getPk_produto()+ "','"
+                + vendaItem.getFkVenda() + "')";
 
         stm.execute(sql, Statement.RETURN_GENERATED_KEYS);
         ResultSet rs = stm.getGeneratedKeys();

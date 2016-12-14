@@ -11,6 +11,7 @@ import empresafxtotal.model.ProdutoDAO;
 import empresafxtotal.model.VendaDAO;
 import java.net.URL;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -113,20 +114,23 @@ public class FXMLMantemVendaController implements Initializable {
     }
 
 
-    public void salvar() throws SQLException {
+    public void salvar() throws SQLException, Exception {
         v = new Venda();
+        
+        Date data = new Date();
+        SimpleDateFormat tipoData = new SimpleDateFormat("yyyy-MM-dd");
+        String dataOk = tipoData.format(data);
+        
         
         ArrayList<VendaItem> vi = new ArrayList<>(obsList);
                 v.setCliente(comboboxClientes.getValue());
-                v.setData(new Date());
-                //v.setNumero(v.getNumerodao());
+                v.setData(dataOk);
+                v.setNumero(1);
                 v.setItens(vi);
                 v.setVendedor(comboboxVendedor.getValue());
                 VendaDAO.create(v);
 
     }
     
-    public void load(){
-    }
     
 }

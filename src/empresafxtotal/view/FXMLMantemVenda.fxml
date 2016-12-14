@@ -11,8 +11,8 @@
       <ComboBox fx:id="comboboxClientes" layoutX="486.0" layoutY="14.0" prefHeight="25.0" prefWidth="199.0" promptText="Clientes" />
       <ComboBox fx:id="comboboxVendedor" layoutX="486.0" layoutY="67.0" prefHeight="25.0" prefWidth="199.0" promptText="Vendedor" />
       <ComboBox fx:id="comboboxProduto" layoutX="486.0" layoutY="121.0" prefHeight="25.0" prefWidth="199.0" promptText="Produto" />
-      <TextField fx:id="textFieldQtd" layoutX="474.0" layoutY="171.0" prefHeight="25.0" prefWidth="59.0" text="Qtd" />
-      <TextField fx:id="textFieldValor" layoutX="540.0" layoutY="171.0" prefHeight="25.0" prefWidth="59.0" text="Valor" />
+      <TextField fx:id="textFieldQtd" layoutX="474.0" layoutY="171.0" prefHeight="25.0" prefWidth="59.0" promptText="Qtd" />
+      <TextField fx:id="textFieldValor" layoutX="540.0" layoutY="171.0" prefHeight="25.0" prefWidth="59.0" promptText="Valor" />
       <Button layoutX="533.0" layoutY="422.0" mnemonicParsing="false" onAction="#limpaTela" prefHeight="25.0" prefWidth="85.0" text="Cancelar" />
       <Button layoutX="625.0" layoutY="422.0" mnemonicParsing="false" onAction="#salvar" text="Enviar" />
       <TableView fx:id="tabelaVendas" layoutX="7.0" layoutY="11.0" prefHeight="404.0" prefWidth="444.0">
@@ -26,6 +26,5 @@
       <Label layoutX="269.0" layoutY="427.0" text="Valor Total:" textFill="#e1170c" />
       <TextField layoutX="376.0" layoutY="422.0" prefHeight="25.0" prefWidth="75.0" />
       <Button layoutX="604.0" layoutY="171.0" mnemonicParsing="false" onAction="#adicionar" prefHeight="25.0" prefWidth="85.0" text="Adicionar" />
-      <Button layoutX="609.0" layoutY="225.0" mnemonicParsing="false" onAction="#load" text="Carregar" />
    </children>
 </AnchorPane>

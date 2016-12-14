@@ -31,12 +31,12 @@ public class VendaItem {
         this.pkVendaItem = pkVendaItem;
     }
 
-    public VendaItem(int qtd, double valorUnitario, int fkProduto, int fkVenda, int pkVendaItem) {
+    public VendaItem(int qtd, double valorUnitario, int fkProduto, int fkVenda) {
         this.qtd = qtd;
         this.valorUnitario = valorUnitario;
         this.fkProduto = fkProduto;
         this.fkVenda = fkVenda;
-        this.pkVendaItem = pkVendaItem;
+        //this.pkVendaItem = pkVendaItem;
     }
     
     
@@ -58,6 +58,14 @@ public class VendaItem {
 
     public int getPkVendaItem() {
         return pkVendaItem;
+    }
+
+    public int getFkProduto() {
+        return fkProduto;
+    }
+
+    public void setFkProduto(int fkProduto) {
+        this.fkProduto = fkProduto;
     }
 
     public void setQtd(int qtd) {
