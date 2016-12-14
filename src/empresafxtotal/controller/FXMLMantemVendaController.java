@@ -36,7 +36,8 @@ public class FXMLMantemVendaController implements Initializable {
 //    private Cliente c;
 //    private int pkFuncionario;
 //    private int pkCliente;
-    Venda v = new Venda();
+    
+    Venda v;
     
     @FXML
     private TableView tabelaVendas;
@@ -97,10 +98,10 @@ public class FXMLMantemVendaController implements Initializable {
 
 
     public void salvar() throws SQLException {
-                ArrayList<VendaItem> vi = new ArrayList<>(obsprodutos);
+                ArrayList<VendaItem> vi = new ArrayList<>(obsList);
                 v.setCliente(comboboxClientes.getValue());
                 v.setData(new Date());
-                v.setNumero(v.getNumerodao());
+                //v.setNumero(v.getNumerodao());
                 v.setItens(vi);
                 v.setVendedor(comboboxVendedor.getValue());
                 VendaDAO.create(v);
