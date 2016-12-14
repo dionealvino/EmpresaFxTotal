@@ -42,8 +42,7 @@
       </Accordion>
       <Button layoutX="319.0" layoutY="422.0" mnemonicParsing="false" onAction="#load" text="Load" />
       <Button layoutX="589.0" layoutY="422.0" mnemonicParsing="false" onAction="#salvar" text="Enviar" />
-      <Button layoutX="506.0" layoutY="422.0" mnemonicParsing="false" text="Cancelar" />
-      <Button layoutX="434.0" layoutY="422.0" mnemonicParsing="false" onAction="#limpaTela" text="Limpar" />
+      <Button layoutX="502.0" layoutY="422.0" mnemonicParsing="false" onAction="#limpaTela" prefHeight="25.0" prefWidth="81.0" text="Cancelar" />
       <ComboBox fx:id="comboBoxClientes" layoutX="23.0" layoutY="422.0" prefHeight="25.0" prefWidth="288.0" promptText="Clientes" />
    </children>
 </AnchorPane>

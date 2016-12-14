@@ -85,10 +85,7 @@ public class Cliente {
     public String toString() {
         return nome;
     }
-<<<<<<< HEAD
-=======
 
->>>>>>> master
     public void save() throws SQLException{
         ClienteDAO.create(this);
     }

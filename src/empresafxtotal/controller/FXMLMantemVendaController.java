@@ -7,11 +7,15 @@ package empresafxtotal.controller;
 
 import empresafxtotal.controller.classes.Cliente;
 import empresafxtotal.controller.classes.Funcionario;
+import empresafxtotal.controller.classes.Produto;
+import empresafxtotal.controller.classes.Venda;
+import empresafxtotal.controller.classes.VendaItem;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 
@@ -29,39 +33,51 @@ public class FXMLMantemVendaController implements Initializable {
     
 
     @FXML
-    private ComboBox<?> comboboxClientes;
+    private ComboBox<Cliente> comboboxClientes;
 
     @FXML
     private TextField textFieldValor;
 
     @FXML
-    private ComboBox<?> comboboxVendedor;
+    private TableColumn<Venda,Double> columnVrTotal;
+
+    @FXML
+    private ComboBox<Funcionario> comboboxVendedor;
+
+    @FXML
+    private TableColumn<VendaItem, Double> columnVrUnitario;
 
     @FXML
     private TextField textFieldQtd;
 
     @FXML
-    private ComboBox<?> comboboxProduto;
+    private ComboBox<Produto> comboboxProduto;
 
     @FXML
-    void limpaTela() {
-
-    }
+    private TableColumn<VendaItem, String> columnProduto;
 
     @FXML
-    void salvar() {
+    private TableColumn<VendaItem, Integer> columnqtd;
 
-    }
 
-    @FXML
-    void gravar() {
 
-    }
     
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
+    
+    public void limpaTela() {
+
+    }
+
+
+    public void salvar() {
+
+    }
+    
+    public void load(){
+    }
     
 }

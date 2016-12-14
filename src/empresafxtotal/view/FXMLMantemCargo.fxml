@@ -28,8 +28,7 @@
       </Accordion>
       <ComboBox fx:id="comboBoxCargos" layoutX="14.0" layoutY="421.0" prefHeight="25.0" prefWidth="288.0" promptText="Cargos" />
       <Button layoutX="311.0" layoutY="421.0" mnemonicParsing="false" onAction="#load" text="Load" />
-      <Button layoutX="539.0" layoutY="421.0" mnemonicParsing="false" text="Cancelar" />
-      <Button layoutX="624.0" layoutY="421.0" mnemonicParsing="false" onAction="#limpaTela" text="Limpar" />
-      <Button layoutX="467.0" layoutY="421.0" mnemonicParsing="false" onAction="#salvar" text="Enviar" />
+      <Button layoutX="543.0" layoutY="421.0" mnemonicParsing="false" onAction="#limpaTela" text="Cancelar" />
+      <Button layoutX="628.0" layoutY="421.0" mnemonicParsing="false" onAction="#salvar" text="Enviar" />
    </children>
 </AnchorPane>

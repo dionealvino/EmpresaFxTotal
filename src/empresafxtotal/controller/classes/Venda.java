@@ -1,5 +1,6 @@
 package empresafxtotal.controller.classes;
 
+import empresafxtotal.model.VendaDAO;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -103,6 +104,14 @@ public class Venda {
     @Override
     public String toString() {
         return "Venda{" + "numero=" + numero + ", data=" + data + ", cliente=" + cliente + ", vendedor=" + vendedor + ", itens=" + itens + ", pkVenda=" + pkVenda + '}';
+    }
+    
+        public void save() throws SQLException{
+            VendaDAO.create(this);
+    }
+  
+    public void update() throws SQLException{
+       VendaDAO.update(this);
     }
 
 }

@@ -13,8 +13,7 @@
 <AnchorPane id="AnchorPane" fx:id="anchorPane" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="empresafxtotal.controller.FXMLMantemFornecedorController">
    <children>
       <Button layoutX="589.0" layoutY="419.0" mnemonicParsing="false" onAction="#salvar" text="Enviar" />
-      <Button layoutX="437.0" layoutY="419.0" mnemonicParsing="false" onAction="#limpaTela" text="Limpar" />
-      <Button layoutX="507.0" layoutY="419.0" mnemonicParsing="false" text="Cancelar" />
+      <Button layoutX="504.0" layoutY="419.0" mnemonicParsing="false" onAction="#limpaTela" prefHeight="25.0" prefWidth="80.0" text="Cancelar" />
       <Accordion prefHeight="500.0" prefWidth="700.0" AnchorPane.bottomAnchor="88.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <panes>
           <TitledPane animated="false" prefHeight="167.0" prefWidth="700.0" text="Dados Gerais">
