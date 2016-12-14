@@ -110,6 +110,12 @@ public class FXMLMantemVendaController implements Initializable {
     }
     
     public void limpaTela() {
+        textFieldQtd.clear();
+        textFieldValor.clear();
+        comboboxClientes.getSelectionModel().clearSelection();
+        comboboxProduto.getSelectionModel().clearSelection();
+        comboboxVendedor.getSelectionModel().clearSelection();
+        obsList.clear();
 
     }
 
