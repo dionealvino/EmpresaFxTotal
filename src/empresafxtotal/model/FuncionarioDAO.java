@@ -55,6 +55,7 @@ public class FuncionarioDAO {
                 fe);
     }
 
+
     public static ArrayList<Funcionario> retreaveByCargo(int fk_cargo) throws SQLException {
         Statement stm
                 = BancoDados.createConnection().
@@ -75,6 +76,7 @@ public class FuncionarioDAO {
         return funcionarios;
     }
 
+    
     public static ArrayList<Funcionario> retreaveAll() throws SQLException {
         Statement stm
                 = BancoDados.createConnection().

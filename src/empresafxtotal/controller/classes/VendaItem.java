@@ -9,7 +9,8 @@ public class VendaItem {
     private int qtd;
     private double valorUnitario;
     private Produto produto;
-
+    
+    private int fkProduto;
     private int fkVenda;
     private int pkVendaItem;
 
@@ -30,6 +31,15 @@ public class VendaItem {
         this.pkVendaItem = pkVendaItem;
     }
 
+    public VendaItem(int qtd, double valorUnitario, int fkProduto, int fkVenda, int pkVendaItem) {
+        this.qtd = qtd;
+        this.valorUnitario = valorUnitario;
+        this.fkProduto = fkProduto;
+        this.fkVenda = fkVenda;
+        this.pkVendaItem = pkVendaItem;
+    }
+    
+    
     public int getQtd() {
         return qtd;
     }

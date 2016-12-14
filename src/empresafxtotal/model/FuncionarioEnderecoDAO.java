@@ -17,7 +17,7 @@ public class FuncionarioEnderecoDAO {
                 = BancoDados.createConnection().
                         createStatement();
         String sql
-                = "insert into funcionarios_enderecos (fk_funcionario, logadouro, bairro, cidade, estado, pais, cep) values('"
+                = "insert into funcionarios_enderecos (fk_funcionario, logradouro, bairro, cidade, estado, pais, cep) values('"
                 + funcEnd.getFk_funcionario() + "','"
                 + funcEnd.getLogradouro() + "','"
                 + funcEnd.getBairro() + "','"
@@ -45,7 +45,7 @@ public class FuncionarioEnderecoDAO {
 
         if (rs.next()) {
             return new FuncionarioEndereco(
-                    rs.getString("logadouro"),
+                    rs.getString("logradouro"),
                     rs.getString("bairro"),
                     rs.getString("cidade"),
                     rs.getString("estado"),
@@ -66,7 +66,7 @@ public class FuncionarioEnderecoDAO {
         ResultSet rs = stm.executeQuery(sql);
         if (rs.next()) {
             return new FuncionarioEndereco(
-                    rs.getString("logadouro"),
+                    rs.getString("logradouro"),
                     rs.getString("bairro"),
                     rs.getString("cidade"),
                     rs.getString("estado"),
@@ -87,7 +87,7 @@ public class FuncionarioEnderecoDAO {
         ArrayList<FuncionarioEndereco> e = new ArrayList<>();
         while (rs.next()) {
             e.add(new FuncionarioEndereco(
-                    rs.getString("logadouro"),
+                    rs.getString("logradouro"),
                     rs.getString("bairro"),
                     rs.getString("cidade"),
                     rs.getString("estado"),
@@ -105,7 +105,7 @@ public class FuncionarioEnderecoDAO {
                 = BancoDados.createConnection().
                         createStatement();
         String sql = "update  funcionarios_enderecos set "
-                + "logadouro = '" + fe.getLogradouro()
+                + "logradouro = '" + fe.getLogradouro()
                 + "', bairro = '" + fe.getBairro()
                 + "', cidade = '" + fe.getCidade()
                 + "', estado = '" + fe.getEstado()
