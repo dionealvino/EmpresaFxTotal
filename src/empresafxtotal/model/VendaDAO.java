@@ -1,6 +1,7 @@
 package empresafxtotal.model;
 
 import empresafxtotal.controller.classes.Venda;
+import empresafxtotal.controller.classes.VendaItem;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -18,19 +19,26 @@ public class VendaDAO {
     }
 
     public static int create(Venda venda) throws SQLException {
-            Statement stm = BancoDados.createConnection().createStatement();
-            String sql = 
-                    "insert into Vendas (nome,cpf) values('" 
-                    + venda.getNumero()+ "','" 
-                    + venda.getData() + "')";
+        Statement stm = BancoDados.createConnection().createStatement();
+        String sql
+                = "insert into Vendas (numero, datas, fk_cliente, fk_vendedor) values('"
+                + venda.getNumero() + "','"
+                + venda.getData() + "')"
+                + venda.getCliente().getPk_cliente() + "','"
+                + venda.getVendedor().getPk_funcionario() + "')";
 
-            stm.execute(sql, Statement.RETURN_GENERATED_KEYS);
-            ResultSet rs = stm.getGeneratedKeys();
-            rs.next();
-            int key = rs.getInt(1); 
-            venda.setPkVenda(key);
-            //EnderecoDAO.create(venda.getEndereco()); //Aqui chamamos a DAO do enderenco e passamos os valores para ela gravar pelo getEnderenco.
-           return key;
+        stm.execute(sql, Statement.RETURN_GENERATED_KEYS);
+        ResultSet rs = stm.getGeneratedKeys();
+        rs.next();
+        int key = rs.getInt(1);
+        venda.setPkVenda(key);
+
+        for (VendaItem vendaItem : venda.getItens()) {
+            vendaItem.setFkVenda(key);
+            VendaItemDAO.create(vendaItem);
+        }
+
+        return key;
     }
 
     public static Venda retreave(int pk_venda) throws SQLException {

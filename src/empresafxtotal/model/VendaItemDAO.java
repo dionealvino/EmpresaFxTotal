@@ -18,14 +18,9 @@ public class VendaItemDAO {
     }
 
     public static int create(VendaItem vendaItem) throws SQLException {
-        /**
-         * pk_item			
-           fk_venda			
-           fk_produto			
-           qtd			
-           valor_unitario
-         */
-        Statement stm = BancoDados.createConnection().createStatement();
+        Statement stm = 
+                BancoDados.createConnection().
+                        createStatement();
         String sql = "insert into vendas_itens (qtd, valor_unitario, fk_produto, fk_venda) values('"
                 + vendaItem.getQtd() + "','"
                 + vendaItem.getValorUnitario() + "','"
