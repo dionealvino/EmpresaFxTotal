@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 /**
  *
- * @author Barbara
+ * @author Barbara, Dione
  */
 public class EnderecoDAO {
 
@@ -40,7 +40,7 @@ public class EnderecoDAO {
                 = BancoDados.createConnection().
                         createStatement();
         String sql
-                = "Select * from clientes_enderecos where pk_enderenco = "
+                = "Select * from clientes_enderecos where pk_endereco = "
                 + pkEndereco;
         ResultSet rs = stm.executeQuery(sql);
         if (rs.next()) {
@@ -51,7 +51,7 @@ public class EnderecoDAO {
                 rs.getString("estado"),
                 rs.getString("pais"),
                 rs.getString("cep"),
-                rs.getInt("pk_enderenco"),
+                rs.getInt("pk_endereco"),
                 rs.getInt("fk_cliente"));
             }
         return null;
@@ -71,7 +71,7 @@ public class EnderecoDAO {
                 rs.getString("estado"),
                 rs.getString("pais"),
                 rs.getString("cep"),
-                rs.getInt("pk_enderenco"),
+                rs.getInt("pk_endereco"),
                 rs.getInt("fk_cliente"));
             }
         return null;
@@ -94,7 +94,7 @@ public class EnderecoDAO {
                     rs.getString("estado"),
                     rs.getString("pais"),
                     rs.getString("cep"),
-                    rs.getInt("pk_enderenco"),
+                    rs.getInt("pk_endereco"),
                     rs.getInt("fk_cliente")));
         }
         return e;
@@ -111,7 +111,7 @@ public class EnderecoDAO {
                 + "', estado = '" + endereco.getEstado()
                 + "', pais = '" + endereco.getPais()
                 + "', cep = '" + endereco.getCep()
-                + "' where pk_enderenco = " + endereco.getPk_endereco();
+                + "' where pk_endereco = " + endereco.getPk_endereco();
         stm.execute(sql);
     }
 
@@ -119,7 +119,7 @@ public class EnderecoDAO {
         Statement stm
                 = BancoDados.createConnection().
                         createStatement();
-        String sql = "delete from clientes_enderecos where pk_enderenco=" + endereco.getPk_endereco();
+        String sql = "delete from clientes_enderecos where pk_endereco=" + endereco.getPk_endereco();
         stm.execute(sql);
     }
 

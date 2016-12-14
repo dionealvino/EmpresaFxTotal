@@ -55,6 +55,26 @@ public class FuncionarioDAO {
                 fe);
     }
 
+    public static ArrayList<Funcionario> retreaveByCargo(int fk_cargo) throws SQLException {
+        Statement stm
+                = BancoDados.createConnection().
+                        createStatement();
+        String sql
+                = "Select * from funcionarios where fk_cargo = " + fk_cargo;
+        ResultSet rs = stm.executeQuery(sql);
+        ArrayList<Funcionario> funcionarios = new ArrayList<>();
+        while (rs.next()) {
+            Cargo c = CargoDAO.retreave(rs.getInt("fk_cargo"));
+            FuncionarioEndereco e = FuncionarioEnderecoDAO.retreaveByFuncionario(rs.getInt("pk_funcionario"));
+            funcionarios.add(new Funcionario(
+                    rs.getInt("pk_funcionario"),
+                    c, rs.getString("nome"),
+                    rs.getString("cpf"),
+                    e));
+        }
+        return funcionarios;
+    }
+
     public static ArrayList<Funcionario> retreaveAll() throws SQLException {
         Statement stm
                 = BancoDados.createConnection().

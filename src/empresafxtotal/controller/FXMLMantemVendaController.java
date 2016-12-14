@@ -15,6 +15,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -65,23 +67,27 @@ public class FXMLMantemVendaController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         
-        columnProduto.setCellValueFactory(new PropertyValueFactory<>("nome"));
-        columnqtd.setCellValueFactory(new PropertyValueFactory<>("qtd"));
-        columnVrUnitario.setCellValueFactory(new PropertyValueFactory<>("vrUnitario"));
-        columnVrTotal.setCellValueFactory(new PropertyValueFactory<>("vrTotal"));
-        
-        tabelaVendas.setItems(null);
-        
-        tabelaVendas.setItems(obsList);
-        
-        List<Cliente> c = ClienteDAO.retreaveAll();
-        comboboxClientes.getItems().addAll(c);
-        
-        List<Funcionario> f = FuncionarioDAO.retreaveVendedor();
-        comboboxVendedor.getItems().addAll(f);
-        
-        List<Produto> p = ProdutoDAO.retreaveAll();
-        comboboxProduto.getItems().addAll(p);
+        try {
+            columnProduto.setCellValueFactory(new PropertyValueFactory<>("nome"));
+            columnqtd.setCellValueFactory(new PropertyValueFactory<>("qtd"));
+            columnVrUnitario.setCellValueFactory(new PropertyValueFactory<>("vrUnitario"));
+            columnVrTotal.setCellValueFactory(new PropertyValueFactory<>("vrTotal"));
+            
+            tabelaVendas.setItems(null);
+            
+            tabelaVendas.setItems(obsList);
+            
+            List<Cliente> c = ClienteDAO.retreaveAll();
+            comboboxClientes.getItems().addAll(c);
+            
+            List<Funcionario> f = FuncionarioDAO.retreaveByCargo(1);
+            comboboxVendedor.getItems().addAll(f);
+            
+            List<Produto> p = ProdutoDAO.retreaveAll();
+            comboboxProduto.getItems().addAll(p);
+        } catch (SQLException ex) {
+            Logger.getLogger(FXMLMantemVendaController.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
 
     }
@@ -105,8 +111,6 @@ public class FXMLMantemVendaController implements Initializable {
                 v.setItens(vi);
                 v.setVendedor(comboboxVendedor.getValue());
                 VendaDAO.create(v);
-        
-        
 
     }
     
