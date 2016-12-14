@@ -14,6 +14,7 @@ import empresafxtotal.model.ClienteDAO;
 import empresafxtotal.model.FuncionarioDAO;
 import empresafxtotal.model.ProdutoDAO;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Observable;
 import java.util.ResourceBundle;
@@ -71,7 +72,7 @@ public class FXMLMantemVendaController implements Initializable {
     @FXML
     private TableColumn<VendaItem, Integer> columnqtd;
 
-    final ObservableList<VendaItem> obs = FXCollections.observableArrayList();
+    final ObservableList<VendaItem> obsList = FXCollections.observableArrayList();
   
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -83,15 +84,25 @@ public class FXMLMantemVendaController implements Initializable {
         
         tabelaVendas.setItems(null);
         
-        tabelaVendas.setItems(obs);
+        tabelaVendas.setItems(obsList);
         
         List<Cliente> c = ClienteDAO.retreaveAll();
         comboboxClientes.getItems().addAll(c);
         
-       // List<Funcionario> f = FuncionarioDAO.retreaveCargo();
+        List<Funcionario> f = FuncionarioDAO.retreaveVendedor();
+        comboboxVendedor.getItems().addAll(f);
         
         List<Produto> p = ProdutoDAO.retreaveAll();
-    }    
+        comboboxProduto.getItems().addAll(p);
+        
+
+    }
+
+    public void gravar(){
+       VendaItem vdItem = new VendaItem(Integer.parseInt(textFieldQtd.getText()), Float.parseFloat(textFieldValor.getText()), comboboxProduto.getValue());
+       obsList.add(vdItem);
+        
+    }
     
     public void limpaTela() {
 
@@ -99,6 +110,9 @@ public class FXMLMantemVendaController implements Initializable {
 
 
     public void salvar() {
+        ArrayList<VendaItem> vi = new ArrayList<>(obsprodutos);
+        
+        
 
     }
     
