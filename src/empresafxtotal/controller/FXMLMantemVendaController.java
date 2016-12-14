@@ -40,6 +40,7 @@ public class FXMLMantemVendaController implements Initializable {
 //    private int pkCliente;
     
     Venda v;
+    VendaItem vdItem;
     
     @FXML
     private TableView tabelaVendas;
@@ -55,8 +56,8 @@ public class FXMLMantemVendaController implements Initializable {
     private ComboBox<Produto> comboboxProduto;
     @FXML
     private TableColumn<VendaItem, Double> columnVrUnitario;
-    @FXML
-    private TableColumn<Venda,Double> columnVrTotal;
+//    @FXML
+//    private TableColumn<Venda,Double> columnVrTotal;
     @FXML
     private TableColumn<VendaItem, String> columnProduto;
     @FXML
@@ -68,10 +69,10 @@ public class FXMLMantemVendaController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         
         try {
-            columnProduto.setCellValueFactory(new PropertyValueFactory<>("nome"));
+            columnProduto.setCellValueFactory(new PropertyValueFactory<>("produto"));
             columnqtd.setCellValueFactory(new PropertyValueFactory<>("qtd"));
-            columnVrUnitario.setCellValueFactory(new PropertyValueFactory<>("vrUnitario"));
-            columnVrTotal.setCellValueFactory(new PropertyValueFactory<>("vrTotal"));
+            columnVrUnitario.setCellValueFactory(new PropertyValueFactory<>("valorUnitario"));
+          // columnVrTotal.setCellValueFactory(new PropertyValueFactory<>("vrTotal"));
             
             tabelaVendas.setItems(null);
             
@@ -80,11 +81,11 @@ public class FXMLMantemVendaController implements Initializable {
             List<Cliente> c = ClienteDAO.retreaveAll();
             comboboxClientes.getItems().addAll(c);
             
-            List<Funcionario> f = FuncionarioDAO.retreaveByCargo(1);
+            List<Funcionario> f = FuncionarioDAO.retreaveByCargo(8);
             comboboxVendedor.getItems().addAll(f);
             
-            List<Produto> p = ProdutoDAO.retreaveAll();
-            comboboxProduto.getItems().addAll(p);
+            List<Produto> produtoLista = ProdutoDAO.retreaveAll();
+            comboboxProduto.getItems().addAll(produtoLista);
         } catch (SQLException ex) {
             Logger.getLogger(FXMLMantemVendaController.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -92,8 +93,8 @@ public class FXMLMantemVendaController implements Initializable {
 
     }
 
-    public void gravar(){
-       VendaItem vdItem = new VendaItem(Integer.parseInt(textFieldQtd.getText()), Float.parseFloat(textFieldValor.getText()), comboboxProduto.getValue());
+    public void adicionar(){
+       vdItem = new VendaItem(Integer.parseInt(textFieldQtd.getText()), Float.parseFloat(textFieldValor.getText()), comboboxProduto.getValue());
        obsList.add(vdItem);
         
     }
@@ -104,7 +105,9 @@ public class FXMLMantemVendaController implements Initializable {
 
 
     public void salvar() throws SQLException {
-                ArrayList<VendaItem> vi = new ArrayList<>(obsList);
+        v = new Venda();
+        
+        ArrayList<VendaItem> vi = new ArrayList<>(obsList);
                 v.setCliente(comboboxClientes.getValue());
                 v.setData(new Date());
                 //v.setNumero(v.getNumerodao());

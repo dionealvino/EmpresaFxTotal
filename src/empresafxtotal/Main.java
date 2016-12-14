@@ -29,9 +29,9 @@ public class Main extends Application {
 //        
 //        ArrayList<VendaItem> vis = new ArrayList<>();
 //        vis.add(new VendaItem(5, 3, new Produto()));
+////        
+//        Venda v = new Venda(1, new Date("10-10-10"), "Bastiana", "Doido", new VendaItem(1, 10.00, new Produto(STYLESHEET_MODENA, 0, 0)));
 //        
-        
-        
         
         
         
@@ -43,9 +43,11 @@ public class Main extends Application {
         stage.setScene(scene);
         stage.show();
         
-        stage.setTitle("EmpresaFX-TOTAL 1.0");
+        stage.setTitle("EmpresaFX-TOTAL 2.0");
         Image icone = new Image(getClass().getResourceAsStream("resources/icon.png"));
         stage.getIcons().add(icone);
+        
+        
     }
 
     /**
