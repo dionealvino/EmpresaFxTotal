@@ -29,7 +29,6 @@
       <ComboBox fx:id="comboBoxProdutos" layoutX="14.0" layoutY="426.0" prefHeight="25.0" prefWidth="288.0" promptText="Produto" />
       <Button layoutX="318.0" layoutY="426.0" mnemonicParsing="false" onAction="#load" text="Load" />
       <Button layoutX="590.0" layoutY="424.0" mnemonicParsing="false" onAction="#salvar" text="Enviar" />
-      <Button layoutX="504.0" layoutY="424.0" mnemonicParsing="false" text="Cancelar" />
-      <Button layoutX="432.0" layoutY="424.0" mnemonicParsing="false" onAction="#limpaTela" text="Limpar" />
+      <Button layoutX="507.0" layoutY="424.0" mnemonicParsing="false" onAction="#limpaTela" text="Cancelar" />
    </children>
 </AnchorPane>
