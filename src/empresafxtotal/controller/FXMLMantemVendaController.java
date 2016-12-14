@@ -8,8 +8,11 @@ import empresafxtotal.controller.classes.VendaItem;
 import empresafxtotal.model.ClienteDAO;
 import empresafxtotal.model.FuncionarioDAO;
 import empresafxtotal.model.ProdutoDAO;
+import empresafxtotal.model.VendaDAO;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
@@ -33,7 +36,7 @@ public class FXMLMantemVendaController implements Initializable {
 //    private Cliente c;
 //    private int pkFuncionario;
 //    private int pkCliente;
-    
+    Venda v = new Venda();
     
     @FXML
     private TableView tabelaVendas;
@@ -93,8 +96,14 @@ public class FXMLMantemVendaController implements Initializable {
     }
 
 
-    public void salvar() {
-        ArrayList<VendaItem> vi = new ArrayList<>(obsprodutos);
+    public void salvar() throws SQLException {
+                ArrayList<VendaItem> vi = new ArrayList<>(obsprodutos);
+                v.setCliente(comboboxClientes.getValue());
+                v.setData(new Date());
+                v.setNumero(v.getNumerodao());
+                v.setItens(vi);
+                v.setVendedor(comboboxVendedor.getValue());
+                VendaDAO.create(v);
         
         
 
