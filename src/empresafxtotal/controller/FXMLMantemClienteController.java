@@ -3,11 +3,12 @@ package empresafxtotal.controller;
 import empresafxtotal.controller.classes.Cliente;
 import empresafxtotal.controller.classes.Endereco;
 import empresafxtotal.model.ClienteDAO;
-import empresafxtotal.model.EnderecoDAO;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
@@ -58,11 +59,15 @@ public class FXMLMantemClienteController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        comboBoxEstado.getItems().addAll("AC", "AL", "AM", "AP", "BA", "CE", "DF", "ES", "GO", "MA", "MG", "MS", "MT", "PA", "PB", "PE", "PI", "PR", "RJ", "RN", "RO", "RS", "SC", "SE", "SP", "TO");
-        comboBoxPais.getItems().addAll("Brasil", "EUA");
-
-        List<Cliente> l = ClienteDAO.retreaveAll();
-        comboBoxClientes.getItems().addAll(l);
+        try {
+            comboBoxEstado.getItems().addAll("AC", "AL", "AM", "AP", "BA", "CE", "DF", "ES", "GO", "MA", "MG", "MS", "MT", "PA", "PB", "PE", "PI", "PR", "RJ", "RN", "RO", "RS", "SC", "SE", "SP", "TO");
+            comboBoxPais.getItems().addAll("Brasil", "EUA");
+            
+            List<Cliente> l = ClienteDAO.retreaveAll();
+            comboBoxClientes.getItems().addAll(l);
+        } catch (SQLException ex) {
+            Logger.getLogger(FXMLMantemClienteController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     public void load() {
@@ -100,19 +105,12 @@ public class FXMLMantemClienteController implements Initializable {
             e = new Endereco();
             insert = true;
         }
-        //Controller.Endereco e = new Controller.Endereco(logradouro, bairro, cidade, estado, pais, cep)
 
-        //c.setEndereco(e);
-        //ClienteDAO.create(c);
         if (insert) {
-            e = new Endereco(textFieldEndereco.getText(), textFieldBairro.getText(), textFieldCidade.getText(), comboBoxEstado.getValue(), comboBoxPais.getValue(), textFieldCEP.getText());
-            c = new Cliente(textFieldNome.getText(), textFieldCPF.getText());
-            c.setEndereco(e);
+            c = new Cliente(textFieldNome.getText(), textFieldCPF.getText(), new Endereco(textFieldEndereco.getText(), textFieldBairro.getText(), textFieldCidade.getText(), comboBoxEstado.getValue(), comboBoxPais.getValue(), textFieldCEP.getText()));
             c.save();
         } else {
-            e = new Endereco(textFieldEndereco.getText(), textFieldBairro.getText(), textFieldCidade.getText(), comboBoxEstado.getValue(), comboBoxPais.getValue(), textFieldCEP.getText(), pkEndereco, fkCliente);
-            c = new Cliente(fkCliente, textFieldNome.getText(), textFieldCPF.getText());
-            c.setEndereco(e);
+            c = new Cliente(fkCliente, textFieldNome.getText(), textFieldCPF.getText(), new Endereco(textFieldEndereco.getText(), textFieldBairro.getText(), textFieldCidade.getText(), comboBoxEstado.getValue(), comboBoxPais.getValue(), textFieldCEP.getText(), pkEndereco, fkCliente));
             c.update();
         }
 

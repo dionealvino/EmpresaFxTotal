@@ -27,12 +27,8 @@ public class Cliente {
         this.endereco = endereco;
     }
 
-    public Cliente(String nome) {
-        this.nome = nome;
-    }
-
     public Cliente() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+
     }
 
     public int getPk_cliente() {

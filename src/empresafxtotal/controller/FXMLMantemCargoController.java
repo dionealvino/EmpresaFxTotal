@@ -1,15 +1,13 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package empresafxtotal.controller;
 
 import empresafxtotal.controller.classes.Cargo;
 import empresafxtotal.model.CargoDAO;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
@@ -19,7 +17,7 @@ import javafx.scene.layout.AnchorPane;
 /**
  * FXML Controller class
  *
- * @author Usuario-PC
+ * @author Bárbara, Dione
  */
 public class FXMLMantemCargoController implements Initializable {
     private int pkCargo;
@@ -40,8 +38,12 @@ public class FXMLMantemCargoController implements Initializable {
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        List<Cargo> l = CargoDAO.retreaveAll();
-        comboBoxCargos.getItems().addAll(l);
+        try {
+            List<Cargo> l = CargoDAO.retreaveAll();
+            comboBoxCargos.getItems().addAll(l);
+        } catch (SQLException ex) {
+            Logger.getLogger(FXMLMantemCargoController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }    
     
     public void load(){
@@ -55,7 +57,7 @@ public class FXMLMantemCargoController implements Initializable {
         textFieldDescricao.clear();
     }
     
-    public void salvar(){
+    public void salvar() throws SQLException{
        boolean insert = false;
        if(c==null){
            c = new Cargo();

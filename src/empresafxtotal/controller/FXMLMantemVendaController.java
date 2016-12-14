@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package empresafxtotal.controller;
 
 import empresafxtotal.controller.classes.Cliente;
@@ -16,7 +11,6 @@ import empresafxtotal.model.ProdutoDAO;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Observable;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -27,12 +21,11 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.layout.AnchorPane;
 
 /**
  * FXML Controller class
  *
- * @author dione
+ * @author Barbara, Dione
  */
 public class FXMLMantemVendaController implements Initializable {
     
@@ -44,31 +37,22 @@ public class FXMLMantemVendaController implements Initializable {
     
     @FXML
     private TableView tabelaVendas;
-
     @FXML
     private TextField textFieldValor;
-        
     @FXML
     private TextField textFieldQtd;
-    
     @FXML
     private ComboBox<Cliente> comboboxClientes;
-    
     @FXML
     private ComboBox<Funcionario> comboboxVendedor;
-
     @FXML
     private ComboBox<Produto> comboboxProduto;
-    
     @FXML
     private TableColumn<VendaItem, Double> columnVrUnitario;
-    
     @FXML
     private TableColumn<Venda,Double> columnVrTotal;
-
     @FXML
     private TableColumn<VendaItem, String> columnProduto;
-
     @FXML
     private TableColumn<VendaItem, Integer> columnqtd;
 
