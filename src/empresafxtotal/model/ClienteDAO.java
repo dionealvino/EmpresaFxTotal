@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 /**
  *
- * @author Barbara
+ * @author Barbara, Dione
  */
 public class ClienteDAO {
 

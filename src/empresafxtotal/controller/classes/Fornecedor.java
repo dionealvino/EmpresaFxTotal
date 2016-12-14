@@ -1,24 +1,30 @@
-
 package empresafxtotal.controller.classes;
 
-import empresafxtotal.controller.classes.FornecedorEndereco;
 import empresafxtotal.model.FornecedorDAO;
+import java.sql.SQLException;
 
-
+/**
+ *
+ * @author Barbara, Dione
+ */
 public class Fornecedor {
+
     private int pk_fornecedor;
     private String nome;
     private String cpf;
-    
+
     private FornecedorEndereco forneEnd;
-  public Fornecedor() {
-        
+
+    public Fornecedor() {
+
     }
+
     public Fornecedor(String nome, String cpf) {
         this.nome = nome;
         this.cpf = cpf;
     }
-     public Fornecedor(int pk_fornecedor, String nome, String cpf) {
+
+    public Fornecedor(int pk_fornecedor, String nome, String cpf) {
         this.pk_fornecedor = pk_fornecedor;
         this.nome = nome;
         this.cpf = cpf;
@@ -31,7 +37,6 @@ public class Fornecedor {
         this.forneEnd = forneEnd;
     }
 
-    
     public int getPk_fornecedor() {
         return pk_fornecedor;
     }
@@ -69,15 +74,13 @@ public class Fornecedor {
     public String toString() {
         return nome;
     }
-    
-    public void save(){
+
+    public void save() throws SQLException {
         FornecedorDAO.create(this);
     }
-    
-    public void update(){
+
+    public void update() throws SQLException {
         FornecedorDAO.update(this);
     }
-    
-    
-    
+
 }

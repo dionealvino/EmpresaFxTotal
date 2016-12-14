@@ -2,7 +2,7 @@ package empresafxtotal.controller.classes;
 
 /**
  *
- * @author Barbara
+ * @author Barbara, Dione
  */
 public class VendaItem {
 

@@ -1,37 +1,33 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package empresafxtotal.controller.classes;
 
 import empresafxtotal.model.CargoDAO;
+import java.sql.SQLException;
 
-
+/**
+ *
+ * @author Barbara, Dione
+ */
 public class Cargo {
-   private int pk_cargo;
-   private String nome;
-   private String descricao;
+
+    private int pk_cargo;
+    private String nome;
+    private String descricao;
 
     public Cargo() {
     }
-   
-  
 
     public Cargo(String nome, String descricao) {
         this.nome = nome;
         this.descricao = descricao;
-        
+
     }
 
     public Cargo(int pk_cargo, String nome, String descricao) {
         this.pk_cargo = pk_cargo;
         this.nome = nome;
         this.descricao = descricao;
-       
+
     }
-   
-   
 
     public int getPk_cargo() {
         return pk_cargo;
@@ -61,19 +57,13 @@ public class Cargo {
     public String toString() {
         return nome;
     }
-    public void save(){
+
+    public void save() throws SQLException {
         CargoDAO.create(this);
     }
-    public void update(){
+
+    public void update() throws SQLException {
         CargoDAO.update(this);
     }
 
-  
-
- 
-   
-   
-   
-    
-    
 }

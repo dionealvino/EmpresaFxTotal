@@ -1,5 +1,9 @@
 package empresafxtotal.controller.classes;
 
+/**
+ *
+ * @author Bárbara, Dione
+ */
 public class FuncionarioEndereco {
 
     private String logradouro;

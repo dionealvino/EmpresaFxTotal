@@ -3,38 +3,31 @@ package empresafxtotal.controller.classes;
 import empresafxtotal.model.ClienteDAO;
 import java.sql.SQLException;
 
-
+/**
+ *
+ * @author Bárbara, Dione
+ */
 public class Cliente {
-    
 
-    private int pk_cliente;    
+    private int pk_cliente;
     private String nome;
     private String cpf;
-    private Endereco endereco; // Representa a relação 1para1 entre Cliente e Endereco.
-    
-    
-        public Cliente(int pk_cliente, String nome, String cpf) {
-        this.pk_cliente = pk_cliente;
-        this.nome = nome;
-        this.cpf = cpf;
-        this.endereco = endereco;
-    }   
-        
+    private Endereco endereco; // Representa a relação 1 para 1 entre Cliente e Endereco.
+
     public Cliente(int pk_cliente, String nome, String cpf, Endereco endereco) {
         this.pk_cliente = pk_cliente;
         this.nome = nome;
         this.cpf = cpf;
         this.endereco = endereco;
-    }   
+    }
 
-    public Cliente(String nome, String cpf) {
+    public Cliente(String nome, String cpf, Endereco endereco) {
         this.nome = nome;
         this.cpf = cpf;
         this.endereco = endereco;
     }
-    
-    public Cliente(String nome)
-    {
+
+    public Cliente(String nome) {
         this.nome = nome;
     }
 
@@ -50,7 +43,7 @@ public class Cliente {
         this.pk_cliente = pk_cliente;
         this.endereco.setFk_cliente(pk_cliente);
     }
-    
+
     public Endereco getEndereco() {
         return endereco;
     }
@@ -59,7 +52,6 @@ public class Cliente {
         this.endereco = endereco;
     }
 
-  
     public String getNome() {
         return nome;
     }
@@ -67,8 +59,7 @@ public class Cliente {
     public void setNome(String nome) {
         if (nome.length() <= 80) {
             this.nome = nome;
-        }
-        else{
+        } else {
             throw new RuntimeException("Tamanho máximo do nome é de 80 caracteres.");
         }
     }
@@ -86,13 +77,12 @@ public class Cliente {
         return nome;
     }
 
-    public void save() throws SQLException{
+    public void save() throws SQLException {
         ClienteDAO.create(this);
     }
-  
-    public void update() throws SQLException{
-       ClienteDAO.update(this);
+
+    public void update() throws SQLException {
+        ClienteDAO.update(this);
     }
-   
 
 }

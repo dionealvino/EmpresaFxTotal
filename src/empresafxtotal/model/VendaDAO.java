@@ -11,7 +11,7 @@ import java.util.ArrayList;
 
 /**
  *
- * @author Bárbara
+ * @author Bárbara, Dione
  */
 public class VendaDAO {
 
@@ -20,7 +20,9 @@ public class VendaDAO {
     }
 
     public static int create(Venda venda) throws SQLException {
-        Statement stm = BancoDados.createConnection().createStatement();
+        Statement stm
+                = BancoDados.createConnection().
+                        createStatement();
         String sql
                 = "insert into vendas (numero, datas, fk_cliente, fk_vendedor) values('"
                 + venda.getNumero() + "','"
@@ -58,7 +60,7 @@ public class VendaDAO {
                 rs.getDate("datas"),
                 cliente,
                 vendedor,
-                todosOsItens, 
+                todosOsItens,
                 pk_venda);
     }
 

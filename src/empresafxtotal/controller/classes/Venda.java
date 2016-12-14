@@ -7,7 +7,7 @@ import java.util.Date;
 
 /**
  *
- * @author Bárbara
+ * @author Bárbara, Dione
  */
 public class Venda {
 
@@ -15,11 +15,10 @@ public class Venda {
 
     private int numero;
     private Date data;
-    
+
     private Cliente cliente;
     private Funcionario vendedor;
     private ArrayList<VendaItem> itens;
-
 
     public Venda() {
     }
@@ -100,13 +99,13 @@ public class Venda {
     public String toString() {
         return "Venda{" + "numero=" + numero + ", data=" + data + ", cliente=" + cliente + ", vendedor=" + vendedor + ", itens=" + itens + ", pkVenda=" + pkVenda + '}';
     }
-    
-        public void save() throws SQLException{
-            VendaDAO.create(this);
+
+    public void save() throws SQLException {
+        VendaDAO.create(this);
     }
-  
-    public void update() throws SQLException{
-       VendaDAO.update(this);
+
+    public void update() throws SQLException {
+        VendaDAO.update(this);
     }
 
 }

@@ -2,17 +2,15 @@ package empresafxtotal.model;
 
 /**
  *
- * @author Barbara
+ * @author Barbara, Dione
  */
 public class BDConfig {
     
     
     public static final String URL = "jdbc:postgresql://localhost/empresa";
     public static final String USR = "postgres";
-    
     //public static final String PWD = "1001";
     public static final String PWD = "root";
-    
     public static final String DRIVER = "org.postgresql.Driver";
     
 }
