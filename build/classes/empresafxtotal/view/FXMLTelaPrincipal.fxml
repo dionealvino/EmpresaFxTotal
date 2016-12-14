@@ -26,7 +26,7 @@
             </Menu>
             <Menu mnemonicParsing="false" text="Movimentaçoes">
               <items>
-                <MenuItem mnemonicParsing="false" text="Vendas" />
+                <MenuItem mnemonicParsing="false" onAction="#abraTelaMantemVenda" text="Vendas" />
               </items>
             </Menu>
          </menus>
