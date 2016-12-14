@@ -50,6 +50,8 @@ public class FXMLMantemVendaController implements Initializable {
     @FXML
     private TextField textFieldQtd;
     @FXML
+    private TextField textFieldValorTotal;
+    @FXML
     private ComboBox<Cliente> comboboxClientes;
     @FXML
     private ComboBox<Funcionario> comboboxVendedor;
@@ -88,12 +90,6 @@ public class FXMLMantemVendaController implements Initializable {
             
             List<Produto> produtoLista = ProdutoDAO.retreaveAll();
             comboboxProduto.getItems().addAll(produtoLista);
-
-            List<Funcionario> funcionarios = FuncionarioDAO.retreaveByCargo(1);
-            comboboxVendedor.getItems().addAll(funcionarios);
-            
-            List<Produto> p = ProdutoDAO.retreaveAll();
-            comboboxProduto.getItems().addAll(p);
             
 
         } catch (SQLException ex) {
@@ -106,6 +102,8 @@ public class FXMLMantemVendaController implements Initializable {
     public void adicionar(){
        vdItem = new VendaItem(Integer.parseInt(textFieldQtd.getText()), Float.parseFloat(textFieldValor.getText()), comboboxProduto.getValue());
        obsList.add(vdItem);
+       
+       calcularTotal();
         
     }
     
@@ -116,6 +114,7 @@ public class FXMLMantemVendaController implements Initializable {
         comboboxProduto.getSelectionModel().clearSelection();
         comboboxVendedor.getSelectionModel().clearSelection();
         obsList.clear();
+        textFieldValorTotal.clear();
 
     }
 
@@ -135,8 +134,30 @@ public class FXMLMantemVendaController implements Initializable {
                 v.setItens(vi);
                 v.setVendedor(comboboxVendedor.getValue());
                 VendaDAO.create(v);
+                
+                limpaTela();
 
     }
     
+    public void calcularColumnValorTotal(){
+        double valor = 0;
+        
+        for(VendaItem vendaItem : obsList){
+            valor = valor + vendaItem.getQtd() * vendaItem.getValorUnitario();
+            
+        }
+        
+    }
     
+    public void calcularTotal(){
+        double valor = 0;
+        
+        for (VendaItem vendaItem : obsList) {
+            valor = valor + vendaItem.getQtd() * vendaItem.getValorUnitario();       
+    }
+        textFieldValorTotal.setText(Double.toString(valor));
+    
+    
+    }
+
 }
