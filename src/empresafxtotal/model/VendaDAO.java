@@ -1,5 +1,7 @@
 package empresafxtotal.model;
 
+import empresafxtotal.controller.classes.Cliente;
+import empresafxtotal.controller.classes.Funcionario;
 import empresafxtotal.controller.classes.Venda;
 import empresafxtotal.controller.classes.VendaItem;
 import java.sql.ResultSet;
@@ -7,13 +9,12 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-
 /**
  *
  * @author Bárbara
  */
 public class VendaDAO {
-    
+
     private VendaDAO() {
 
     }
@@ -21,7 +22,7 @@ public class VendaDAO {
     public static int create(Venda venda) throws SQLException {
         Statement stm = BancoDados.createConnection().createStatement();
         String sql
-                = "insert into Vendas (numero, datas, fk_cliente, fk_vendedor) values('"
+                = "insert into vendas (numero, datas, fk_cliente, fk_vendedor) values('"
                 + venda.getNumero() + "','"
                 + venda.getData() + "')"
                 + venda.getCliente().getPk_cliente() + "','"
@@ -42,19 +43,23 @@ public class VendaDAO {
     }
 
     public static Venda retreave(int pk_venda) throws SQLException {
-            Statement stm
-                    = BancoDados.createConnection().
-                            createStatement();
+        Statement stm
+                = BancoDados.createConnection().
+                        createStatement();
 
-            String sql = "Select * from Vendas where pk_Venda=" + pk_venda;
-            ResultSet rs = stm.executeQuery(sql);
-            rs.next();
-            //Endereco e = EnderecoDAO.retreaveByVenda(pk_venda);
-            return new Venda(
-                    rs.getInt("pk_Venda"),
-                    rs.getString("nome"),
-                    rs.getString("cpf"), e);
-
+        String sql = "Select * from vendas where pk_venda=" + pk_venda;
+        ResultSet rs = stm.executeQuery(sql);
+        rs.next();
+        Cliente cliente = ClienteDAO.retreave(rs.getInt("fk_cliente"));
+        Funcionario vendedor = FuncionarioDAO.retreave(rs.getInt("fk_vendedor"));
+        ArrayList<VendaItem> todosOsItens = VendaItemDAO.retreaveByVenda(pk_venda);
+        return new Venda(
+                rs.getInt("numero"),
+                rs.getDate("datas"),
+                cliente,
+                vendedor,
+                todosOsItens, 
+                pk_venda);
     }
 
     public static ArrayList<Venda> retreaveAll() throws SQLException {
@@ -64,42 +69,49 @@ public class VendaDAO {
         String sql = "Select * from Vendas";
         ResultSet rs = stm.executeQuery(sql);
         ArrayList<Venda> vendas = new ArrayList<>();
-        while (rs.next())//vamos fazer uma condição para que o next vai andando na tabela ate o final
-        {
-            //Endereco e = EnderecoDAO.retreaveByVenda(rs.getInt("pk_Venda")); //Como já temos o retrave no
-            //Endereco fazemo a consulta em Venda e pegamos a chave com o rs.getInt
-            //Na parte de baixo vamos add a consulta na lista
+        while (rs.next()) {
+            Cliente cliente = ClienteDAO.retreave(rs.getInt("fk_cliente"));
+            Funcionario vendedor = FuncionarioDAO.retreave(rs.getInt("fk_vendedor"));
+            ArrayList<VendaItem> todosOsItens = VendaItemDAO.retreaveByVenda(rs.getInt("pk_venda"));
             vendas.add(new Venda(
-                    rs.getInt("pk_Venda"),
-                    rs.getString("nome"),
-                    rs.getString("cpf")));
+                    rs.getInt("numero"),
+                    rs.getDate("datas"),
+                    cliente,
+                    vendedor,
+                    todosOsItens,
+                    rs.getInt("pk_venda")));
         }
-
+        rs.next();
         return vendas;
     }
 
-    public static void delete(Venda venda) throws SQLException {
-            Statement stm
-                    = BancoDados.createConnection().
-                    createStatement();
-            String sql = "delete from Vendas where pk_Venda=" + venda.getPkVenda();
-            System.out.println(sql);
-            stm.execute(sql);
+    public static void update(Venda venda) throws SQLException {
+        Statement stm
+                = BancoDados.createConnection().
+                        createStatement();
+        String sql = "update  vendas set "
+                + "numero = '" + venda.getNumero()
+                + "', datas = '" + venda.getData()
+                + "'where pk_venda=" + venda.getPkVenda();
+
+        stm.execute(sql);
+
+        for (VendaItem vendaItem : venda.getItens()) {
+            if (vendaItem.getPkVendaItem() != 0) {
+                VendaItemDAO.update(vendaItem);
+            } else {
+                vendaItem.setFkVenda(venda.getPkVenda());
+                VendaItemDAO.create(vendaItem);
+            }
+        }
     }
 
-  
-    public static void update(Venda venda) throws SQLException {
-            Statement stm
-                    = BancoDados.createConnection().
-                    createStatement();
-            String sql = "update  Vendas set " 
-                    + "nome='" + venda.getNome() 
-                    + "',cpf='" + venda.getCpf() 
-                    + "'where pk_Venda=" + venda.getPkVenda();
-            EnderecoDAO.update(venda.getEndereco());
-            System.out.println(sql);
-            stm.execute(sql);
-
+    public static void delete(Venda venda) throws SQLException {
+        Statement stm
+                = BancoDados.createConnection().
+                        createStatement();
+        String sql = "delete from vendas where pk_venda=" + venda.getPkVenda();
+        stm.execute(sql);
     }
 
 }

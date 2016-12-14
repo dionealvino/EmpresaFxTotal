@@ -7,7 +7,7 @@ import java.util.Date;
 
 /**
  *
- * @author Barbara
+ * @author Bárbara
  */
 public class Venda {
 
@@ -24,13 +24,6 @@ public class Venda {
     public Venda() {
     }
 
-    public Venda(int numero, Date data, Cliente cliente, Funcionario vendedor) {
-        this.numero = numero;
-        this.data = data;
-        this.cliente = cliente;
-        this.vendedor = vendedor;
-    }
-
     public Venda(int numero, Date data, Cliente cliente, Funcionario vendedor, ArrayList<VendaItem> itens) {
         this.numero = numero;
         this.data = data;
@@ -39,9 +32,10 @@ public class Venda {
         this.itens = itens;
     }
 
-    public Venda(int numero, Date data, Funcionario vendedor, ArrayList<VendaItem> itens, int pkVenda) {
+    public Venda(int numero, Date data, Cliente cliente, Funcionario vendedor, ArrayList<VendaItem> itens, int pkVenda) {
         this.numero = numero;
         this.data = data;
+        this.cliente = cliente;
         this.vendedor = vendedor;
         this.itens = itens;
         this.pkVenda = pkVenda;
